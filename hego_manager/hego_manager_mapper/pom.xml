@@ -32,6 +32,12 @@
 		<artifactId>mybatis-paginator</artifactId>
 	</dependency>
 	
+	<!-- 分页插件 -->
+	<dependency>
+		<groupId>com.github.pagehelper</groupId>
+		<artifactId>pagehelper</artifactId>
+	</dependency>
+	
 	<!-- MySql -->
 	<dependency>
 		<groupId>mysql</groupId>
@@ -42,10 +48,6 @@
 		<groupId>com.alibaba</groupId>
 		<artifactId>druid</artifactId>
 	</dependency>
-<!-- 	<dependency>
-		<groupId>com.github.pagehelper</groupId>
-		<artifactId>pagehelper</artifactId>
-	</dependency> -->
 		
   </dependencies>
 
