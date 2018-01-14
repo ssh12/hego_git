@@ -36,6 +36,8 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 数据库连接池 -->
 		<property name="dataSource" ref="dataSource" />
+		<!-- 分页插件pagehelper 配置 -->
+		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

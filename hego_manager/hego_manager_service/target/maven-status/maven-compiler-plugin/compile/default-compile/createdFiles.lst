@@ -1,2 +1,4 @@
 cn\gzsxt\service\impl\ItemServiceimpl.class
 cn\gzsxt\service\ItemService.class
+cn\gzsxt\service\ItemCatService.class
+cn\gzsxt\service\impl\ItemCatServiceImpl.class
