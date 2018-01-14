@@ -7,4 +7,63 @@
   </parent>
   <artifactId>hego_manager_web</artifactId>
   <packaging>war</packaging>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.gzsxt</groupId>
+  		<artifactId>hego_manager_mapper</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  
+  	<dependency>
+  		<groupId>cn.gzsxt</groupId>
+  		<artifactId>hego_manager_service</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>cn.gzsxt</groupId>
+  		<artifactId>hego_common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<!-- spring -->
+  	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aspects</artifactId>
+	</dependency>
+
+	<!-- Jackson Json处理工具包 -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+	</dependency>
+  	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jsp-api</artifactId>
+		<scope>provided</scope>
+	</dependency>
+  </dependencies>
+  
 </project>
