@@ -5,7 +5,22 @@
     <artifactId>hego_parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>cn.gzsxt</groupId>
   <artifactId>hego_common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  <dependencies>
+  
+	<dependency>
+		<groupId>commons-net</groupId>
+		<artifactId>commons-net</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+	</dependency>
+	
+  </dependencies>
+
+  
 </project>

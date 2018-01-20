@@ -9,6 +9,7 @@
 	            <td>商品类目:</td>
 	            <td>
 	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
+	            	<!-- cid为已选中的商品类别id -->
 	            	<input type="hidden" name="cid" style="width: 280px;"></input>
 	            </td>
 	        </tr>
@@ -40,6 +41,7 @@
 	            <td>商品图片:</td>
 	            <td>
 	            	 <a href="javascript:void(0)" class="easyui-linkbutton picFileUpload">上传图片</a>
+	                 <!-- 上传的图片url，位置，可以通过该url访问图片 -->
 	                 <input type="hidden" name="image"/>
 	            </td>
 	        </tr>

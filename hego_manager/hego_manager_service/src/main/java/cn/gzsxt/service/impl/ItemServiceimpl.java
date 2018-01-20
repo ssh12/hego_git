@@ -1,5 +1,6 @@
 package cn.gzsxt.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,17 +9,23 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import cn.gzsxt.mapper.TbItemDescMapper;
 import cn.gzsxt.mapper.TbItemMapper;
 import cn.gzsxt.pojo.TbItem;
+import cn.gzsxt.pojo.TbItemDesc;
 import cn.gzsxt.pojo.TbItemExample;
 import cn.gzsxt.service.ItemService;
+import cn.gzsxt.util.IDUtils;
 import cn.gzsxt.vo.EUDataGriadResult;
+import cn.gzsxt.vo.EgoResult;
 
 @Service
 public class ItemServiceimpl implements ItemService {
 
 	@Autowired
 	private TbItemMapper itemMapper;
+	@Autowired
+	private TbItemDescMapper itemDescMapper;
 	
 	@Override
 	public TbItem getItemById(Long id) {
@@ -44,6 +51,72 @@ public class ItemServiceimpl implements ItemService {
 		result.setRows(itemList);
 		
 		return result;
+	}
+
+	@Override
+	public void saveItem(TbItem item, String desc) {
+		// 商品表的信息
+		//其他属性，已经由表单提交到set进入
+		long itemId = IDUtils.genItemId();
+		Date date = new Date();
+		item.setId(itemId);
+		item.setCreated(date);
+		item.setUpdated(date);
+		// 商品状态，1-正常，2-下架，3-删除
+		item.setStatus((byte) 1);
+		// 保存商品信息到商品表
+		itemMapper.insert(item);
+		// 商品描述的信息
+		TbItemDesc itemDesc = new TbItemDesc();
+		itemDesc.setItemId(itemId);
+		itemDesc.setItemDesc(desc);
+		itemDesc.setCreated(date);
+		itemDesc.setUpdated(date);
+		itemDescMapper.insert(itemDesc);
+	}
+
+	@Override
+	public EgoResult geTbItemDesc(Long id) {
+		TbItemDesc tbItemDesc = itemDescMapper.selectByPrimaryKey(id);
+		EgoResult egoResult = new EgoResult(tbItemDesc);
+		return egoResult;
+	}
+
+	@Override
+	public void upDateItem(TbItem item, String desc) {
+		Long id = item.getId();
+		Date date = new Date();
+		item.setUpdated(date);
+		itemMapper.updateByPrimaryKeySelective(item);
+		
+		TbItemDesc itemDesc = new TbItemDesc();
+		itemDesc.setItemId(id);
+		itemDesc.setItemDesc(desc);
+		itemDesc.setUpdated(date);
+		itemDescMapper.updateByPrimaryKeySelective(itemDesc);
+	}
+
+	@Override
+	public void deleteItem(Long id) {
+		itemMapper.deleteByPrimaryKey(id);
+		itemDescMapper.deleteByPrimaryKey(id);
+		//删除图片
+	}
+
+	@Override
+	public void instockItem(Long id) {
+		TbItem item = itemMapper.selectByPrimaryKey(id);
+		// 商品状态，1-正常，2-下架，3-删除
+		item.setStatus((byte) 2);
+		itemMapper.updateByPrimaryKeySelective(item);
+	}
+
+	@Override
+	public void reshelfItem(Long id) {
+		TbItem item = itemMapper.selectByPrimaryKey(id);
+		// 商品状态，1-正常，2-下架，3-删除
+		item.setStatus((byte) 1);
+		itemMapper.updateByPrimaryKeySelective(item);
 	}
 
 }
